@@ -1,0 +1,50 @@
+Zadanie (0.10 pkt)
+Dana jest tablica n liczb całkowitych. Element tablicy jest lokalnym maksimum, jeśli jest większy od obu swoich sąsiadów (poprzedniego i następnego elementu).
+
+Pierwszy i ostatni element nie mogą być lokalnymi maksimami, ponieważ nie mają dwóch sąsiadów. Należy policzyć, ile lokalnych maksimów występuje w tablicy.
+
+Format wejścia:
+
+Pierwsza linia: liczba n (3 ≤ n ≤ 100) - rozmiar tablicy
+Druga linia: n liczb całkowitych oddzielonych spacjami (0 ≤ wartość ≤ 100)
+Format wyjścia:
+
+Jedna liczba - liczba lokalnych maksimów
+
+#include <stdio.h>
+
+int main() {
+
+    int liczby[100];
+    int rozmiar_tablicy = 0;
+    int lokalne_maksimum = 0;
+
+    scanf("%d", &rozmiar_tablicy);
+
+    while (rozmiar_tablicy < 3)
+    {
+        printf("Tablica musi zawierac min. 3 elementy. Podaj jeszcze raz ilosc elementow tablicy: \n");
+        scanf("%d", &rozmiar_tablicy);
+    }
+
+    for (int i = 0; i < rozmiar_tablicy; i++)
+    {
+        scanf("%d", &liczby[i]);
+    }
+
+    for (int i = 1; i < rozmiar_tablicy - 1; i++)
+    {
+        if (liczby[i] > liczby[i - 1] && liczby[i] > liczby[i + 1])
+        {
+            lokalne_maksimum++;
+        } else
+        {
+            continue;
+        }
+    }
+
+    printf("%d\n", lokalne_maksimum);
+
+
+    return 0;
+}
