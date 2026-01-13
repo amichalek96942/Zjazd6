@@ -1,0 +1,37 @@
+Zadanie (0.10 pkt)
+Dany jest napis składający się z małych liter angielskiego alfabetu. Zadaniem jest znalezienie litery występującej najczęściej. Jeśli kilka liter ma tę samą najwyższą częstość, wybieramy pierwszą alfabetycznie.
+
+Format wejścia:
+
+Jedna linia: łańcuch znaków (tylko 'a'–'z').
+Format wyjścia:
+
+Dwie linie: w pierwszej najczęstsza litera, w drugiej jej liczność.
+
+#include <stdio.h>
+
+int main() {
+    char napis[1001];
+    scanf("%s", napis);
+
+    int licznik[26] = {0};
+
+    // Zliczanie wystąpień każdej litery
+    for (int i = 0; napis[i] != '\0'; i++) {
+        licznik[napis[i] - 'a']++;
+    }
+
+    // Szukanie litery o największej liczbie wystąpień
+    int maxLitera = 0;
+    for (int i = 1; i < 26; i++) {
+        if (licznik[i] > licznik[maxLitera]) {
+            maxLitera = i;
+        }
+    }
+
+    // Wynik
+    printf("%c\n", maxLitera + 'a');
+    printf("%d\n", licznik[maxLitera]);
+
+    return 0;
+}
