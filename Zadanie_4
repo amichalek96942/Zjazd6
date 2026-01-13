@@ -1,0 +1,52 @@
+Dana jest tablica ocen (liczby zmiennoprzecinkowe). Obliczamy średnią oraz liczbę ocen ściśle większych od średniej. Średnią wypisujemy z dokładnością do 2 miejsc po przecinku.
+
+Format wejścia:
+
+Pierwsza linia: n (1 ≤ n ≤ 100)
+Druga linia: n liczb typu double
+Format wyjścia:
+
+Dwie linie: średnia (2 miejsca po przecinku) oraz liczba ocen powyżej średniej.
+
+
+#include <stdio.h>
+
+int main() {
+
+    double oceny[100];
+    int ilosc_ocen = 0;
+    double suma_ocen = 0;
+
+    scanf("%d", &ilosc_ocen);
+
+
+        for (int i = 0; i < ilosc_ocen; i++)
+        {
+            scanf("%lf", &oceny[i]);
+        }
+
+
+    for (int i = 0; i < ilosc_ocen; i++)
+    {
+        suma_ocen = suma_ocen + oceny[i];
+    }
+    double srednia_ocen = suma_ocen / ilosc_ocen;
+
+
+    int oceny_powyzej_sredniej = 0;
+
+    for (int i = 0; i < ilosc_ocen; i++)
+    {
+        if (oceny[i] > srednia_ocen)
+        {
+            oceny_powyzej_sredniej++;
+        }
+    }
+
+
+    printf("%.2lf\n", srednia_ocen);
+    printf("%d", oceny_powyzej_sredniej);
+
+
+    return 0;
+}
