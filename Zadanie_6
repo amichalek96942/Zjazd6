@@ -1,0 +1,46 @@
+Dana jest tablica temperatur (double). Znajdź wartości minimalną i maksymalną oraz ich różnicę. Wypisz liczby z dokładnością do 1 miejsca po przecinku.
+
+Format wejścia:
+
+Pierwsza linia: n (1 ≤ n ≤ 100)
+Druga linia: n liczb typu double
+Format wyjścia:
+
+Trzy linie: min, max oraz (max - min), każda z 1 miejscem po przecinku.
+
+
+#include <stdio.h>
+
+int main() {
+
+    double temperatury[100] = {0};
+    int ilosc_pomiarow = 0;
+
+    scanf("%d", &ilosc_pomiarow);
+
+    for (int i = 0; i < ilosc_pomiarow; i++)
+    {
+        scanf("%lf", &temperatury[i]);
+    }
+
+    double minimum = temperatury[0];
+    double maksimum = temperatury[0];
+
+    for (int i = 0; i < ilosc_pomiarow; i++)
+    {
+        if (temperatury[i] < minimum)
+        {
+            minimum = temperatury[i];
+        }
+        else if (temperatury[i] > maksimum)
+        {
+            maksimum = temperatury[i];
+        }
+    }
+
+    printf("%.1lf\n", minimum);
+    printf("%.1lf\n", maksimum);
+    printf("%.1lf\n", maksimum - minimum);
+
+    return 0;
+}
