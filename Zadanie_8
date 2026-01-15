@@ -1,0 +1,63 @@
+Zadanie (0.10 pkt)
+Dana jest macierz n×m liczb zmiennoprzecinkowych. Wyznacz średnią wszystkich elementów macierzy, a następnie dla każdego wiersza policz, ile elementów w tym wierszu jest większych od tej średniej. Wypisz n liczb odpowiadających kolejnym wierszom.
+
+Format wejścia:
+
+Pierwsza linia: n m (1 ≤ n,m ≤ 50)
+Kolejne n linii: po m liczb typu double
+Format wyjścia:
+
+Jedna linia: n liczb całkowitych (oddzielonych spacjami).
+
+
+#include <stdio.h>
+
+int main() {
+
+    int n = 0;
+    int m = 0;
+
+    scanf("%d %d", &n, &m);
+
+    double macierz[n][m];
+    double suma_elementow = 0;
+    int liczba_elementow = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            scanf("%lf", &macierz[i][j]);
+            suma_elementow = suma_elementow + macierz[i][j];
+            liczba_elementow++;
+        }
+    }
+
+    double srednia = suma_elementow / liczba_elementow;
+
+    int numer_wiersza[50];
+
+
+
+    for (int i = 0; i < n; i++)
+    {
+        int wieksza_od_sredniej = 0;
+        for (int j = 0; j < m; j++)
+        {
+            if (macierz[i][j] > srednia)
+            {
+                wieksza_od_sredniej++;
+            }
+        }
+        numer_wiersza[i] = wieksza_od_sredniej;
+    }
+
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d ", numer_wiersza[i]);
+    }
+
+
+    return 0;
+}
